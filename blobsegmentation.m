@@ -1,1 +1,1 @@
-img = Import["http://goo.gl/IUUtVC"];
+(* Mathematica Deep Learning for segmenting aggregates *)
