@@ -1,2 +1,2 @@
 # blobsegmentation
-using supervised learning to automate aggregate segmentation (on-going work)
+using supervised learning to automate aggregate/gastruloid segmentation (on-going work)
