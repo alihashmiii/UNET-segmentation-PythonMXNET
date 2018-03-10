@@ -34,5 +34,5 @@ The convolutional neural network is trained sufficiently with a training-dataset
 
 To do:
 - resize output back ?
-- implement the network in the Wolfram Language
-- better hyperparameters
+- implement the network in Mathematica
+- find better hyperparameters and evaluation_metric
