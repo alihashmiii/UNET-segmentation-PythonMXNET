@@ -1,5 +1,7 @@
 # Blob Segmentation with U-Net
 
+- To do: implement the network in the Wolfram Language
+
 @author: Ali Hashmi
 
 @note: The python script uses MXNET (a modern opensource deep learning framework) to implement U-net: https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net
@@ -11,20 +13,20 @@ The convolutional neural network is trained sufficiently with a training-dataset
 
 ### Example:
 
-#### Original Image:
+#### Original Image
 
 ![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/image300.png)
 
 
 
 
-#### Ground Truth (from human):
+#### Ground Truth (from human)
 
 ![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/Mask300.png)
 
 
 
-#### Segmentation Output (from U-Net):
+#### Segmentation Output (from U-Net)
 
 ![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/segmentationOutput.png)
 
