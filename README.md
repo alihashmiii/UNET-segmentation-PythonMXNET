@@ -1,6 +1,8 @@
 # Blob Segmentation with U-Net
 
-- To do: implement the network in the Wolfram Language
+To do: 
+- implement the network in the Wolfram Language
+- better hyperparameters
 
 @author: Ali Hashmi
 
