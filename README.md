@@ -32,6 +32,7 @@ The convolutional neural network is trained sufficiently with a training-dataset
 
 ###### Note: The gaps in the segmentation result can be closed with some morphological image processing operations such as a Dilation/Closing operation. Perhaps the results can be improved with sufficient training and suitable choice of hyperparameters.
 
-To do: 
+To do:
+- resize output back ?
 - implement the network in the Wolfram Language
 - better hyperparameters
