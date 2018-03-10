@@ -11,17 +11,19 @@ The convolutional neural network is trained sufficiently with a training-dataset
 
 Example:
 
-Original Image:
+##Original Image:
+
+![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/image300.tif)
 
 
 
 
-Ground Truth:
+##Ground Truth:
 
 
 
 
-Segmentation Output:
+##Segmentation Output:
 
 
 
