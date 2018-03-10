@@ -25,4 +25,4 @@ Segmentation Output:
 
 
 
-# the gaps can be closed with Morphological Image processing operations such as Closing. Perhaps the results can be improved with sufficient training and suitable choice of hyperparameters
+"the gaps can be closed with Morphological Image processing operations such as Closing. Perhaps the results can be improved with sufficient training and suitable choice of hyperparameters"
