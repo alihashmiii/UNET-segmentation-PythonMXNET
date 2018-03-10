@@ -20,10 +20,13 @@ Example:
 
 ## Ground Truth:
 
+![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/Mask300.tif)
 
 
 
 ## Segmentation Output:
+
+![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/segmentationOutput.tif)
 
 
 
