@@ -1,9 +1,5 @@
 # Blob Segmentation with U-Net
 
-To do: 
-- implement the network in the Wolfram Language
-- better hyperparameters
-
 @author: Ali Hashmi
 
 @note: The python script uses MXNET (a modern opensource deep learning framework) to implement U-net: https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net
@@ -35,3 +31,7 @@ The convolutional neural network is trained sufficiently with a training-dataset
 
 
 ###### Note: The gaps in the segmentation result can be closed with some morphological image processing operations such as a Dilation/Closing operation. Perhaps the results can be improved with sufficient training and suitable choice of hyperparameters.
+
+To do: 
+- implement the network in the Wolfram Language
+- better hyperparameters
