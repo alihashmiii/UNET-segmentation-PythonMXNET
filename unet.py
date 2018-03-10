@@ -1,10 +1,13 @@
 # U-ConvNet for segmentation of aggregates
 
-# loss function, maybe more time, grid search, initializer to xavier
-
 print("""The script is a Python implementation of UConvNet for image segmentation. We provide a labeled training dataset to
 train the neural net. The script makes use of MXNET library/APIs, functions from OpenCV (CLAHE) and the python libraries:
-numpy, matplotlib, os and PIL\n""")
+numpy, matplotlib, os and PIL\n
+/**
+ * @author :Ali Hashmi
+ *
+ *  code is based of "https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/" :
+ */\n""")
 
 ############ importing all relevant modules ############
 import mxnet as mx, os, numpy as np, matplotlib.pyplot as plt, cv2, logging, random
