@@ -13,20 +13,20 @@ Example:
 
 #### Original Image:
 
-![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/image300.tif)
+![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/image300.png)
 
 
 
 
 #### Ground Truth (from human):
 
-![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/Mask300.tif)
+![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/Mask300.png)
 
 
 
 #### Segmentation Output (from U-Net):
 
-![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/segmentationOutput.tif)
+![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/segmentationOutput.png)
 
 
 
