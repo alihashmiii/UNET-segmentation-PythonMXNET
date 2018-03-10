@@ -18,13 +18,13 @@ Example:
 
 
 
-#### Ground Truth:
+#### Ground Truth (from human):
 
 ![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/Mask300.tif)
 
 
 
-#### Segmentation Output:
+#### Segmentation Output (from U-Net):
 
 ![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/segmentationOutput.tif)
 
