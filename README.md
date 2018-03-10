@@ -30,4 +30,4 @@ Example:
 
 
 
-#### Note: The gaps in the segmentation result can be closed with some morphological image processing operations such as a Dilation/Closing operation. Perhaps the results can be improved with sufficient training and suitable choice of hyperparameters.
+###### Note: The gaps in the segmentation result can be closed with some morphological image processing operations such as a Dilation/Closing operation. Perhaps the results can be improved with sufficient training and suitable choice of hyperparameters.
