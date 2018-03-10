@@ -9,7 +9,7 @@ based applications (requiring the search for  new hyperparameters)
 
 The convolutional neural network is trained sufficiently with a training-dataset (consists of images and labels). The network once trained can be applied on an image to generate the segmentation mask
 
-Example:
+### Example:
 
 #### Original Image:
 
