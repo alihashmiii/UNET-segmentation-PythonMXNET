@@ -7,7 +7,7 @@
 The neural network is general purpose but the script is not. Therefore, the script needs to be customized for other segmentation 
 based applications (requiring the search for  new hyperparameters)
 
-The convolutional neural network is trained sufficiently with a training-dataset (consists of images and labels) over an Nvidia GTX 1050 GPU with 640 CUDA cores. Training takes a matter of minutes. Training over a CPU is possible in case a GPU is not available, but it will take considerably longer time (usually several hours due to a lower number of processor cores).
+The convolutional neural network was sufficiently trained - the training-dataset consists of images and labels - over an Nvidia GTX 1050 GPU with 640 CUDA cores. The training takes a matter of minutes. Training over a CPU is possible in case a GPU is not available, but it will take considerably longer time (usually several hours due to a lower number of processor cores).
 
 The network once trained can be applied on an image to generate the segmentation mask
 
