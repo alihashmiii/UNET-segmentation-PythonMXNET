@@ -5,7 +5,7 @@ numpy, matplotlib, os and PIL\n
 /**
  * @author :Ali Hashmi
  *
- *  code is based of "https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/" :
+ *  code is based of the architecture proposed at "https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/" :
  */\n""")
 
 ############ importing all relevant modules ############
