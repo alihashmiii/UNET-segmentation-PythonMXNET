@@ -162,7 +162,7 @@ imagefilenames = imagefilenames[0:320]
 maskfilenames = maskfilenames[0:320]
 
 ##### Resize images
-#train_x = np.asarray(list(map(lambda x: np.array(imageResize(x)), imagefilenames))) """ same as below, just more functional in nature"""
+#train_x = np.asarray(list(map(lambda x: np.array(imageResize(x)), imagefilenames))) """same as below, just more functional in nature"""
 train_x = np.asarray([np.array(imageResize(imagefilenames[i])) for i in range(len(imagefilenames))])
 
 ##### image resizing with CLAHE OpenCV
@@ -234,7 +234,6 @@ if train:
 
 
 ############## Supplementary procedures ################
-
 #### retrain the network-model if necessary
 if retrain:
     iteration = str(start_epoch)
@@ -257,7 +256,6 @@ if retrain:
     model.save_checkpoint(model_prefix,num_round)
 
 #### load the pretrained network and apply over an image
-
 def printOutput(matrix):
     """ matrix printout function to display output matrix """
     plt.matshow(matrix)
@@ -267,7 +265,6 @@ if applynet:
     os.chdir(directory + "saved_models\\saved\\iteration " + str(num_round))
     model_prefix = "blobseg_model"
     testimgdata = np.asarray(imageResize(test_img)).reshape((1,1,width,height))
-
     symbolicNet, arg_params, aux_params = mx.model.load_checkpoint(model_prefix,num_round) # loading the trained network
     all_layers = symbolicNet.get_internals()   # retrieve all the layers of the network symbolically
     print("printing last 10 NET-layers:", all_layers.list_outputs()[-10:],"\n") #printing the last 10 symbolic-layers of the network
