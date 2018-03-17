@@ -278,7 +278,8 @@ def printOutput(matrix):
     plt.show()
 
 if applynet:
-    os.chdir(directory + "saved_models\\lg_saves\\iteration " + str(num_round)) # directory to load the pretrained model
+    # directory to load the pretrained model - use num_round or save_round to load the desired model
+    os.chdir(directory + "saved_models\\lg_saves\\iteration " + str(num_round)) 
     model_prefix = "blobseg_model"
 
     testimgdata = np.asarray(imageResize(test_img)).reshape((1,1,width,height)) # input data to the net
