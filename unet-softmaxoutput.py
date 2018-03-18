@@ -225,8 +225,8 @@ metric_custom_rmse = mx.metric.CustomMetric(feval = custom_rmse)
 
 train_iter = mx.io.NDArrayIter(data = {'data': train_x_array}, label = {'softmax_label': train_y_array},
  batch_size = batch_size, shuffle=True) ; """ generate iterations over training set"""
-val_iter = mx.io.NDArrayIter(data = test_x_array, label = test_y_array, batch_size = batch_size, shuffle=True); """ generate iterations over
-validation/testing set """
+val_iter = mx.io.NDArrayIter(data = test_x_array, label = test_y_array, batch_size = batch_size, shuffle=True); """ generate
+iterations over validation/testing set """
 
 # training the network-model
 if train:
