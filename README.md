@@ -39,5 +39,4 @@ The network once trained can be applied on an image to generate the segmentation
 To do:
 - improve the segmentation results
 - resize output back ?
-- implement the network in Mathematica
 - find better hyperparameters and evaluation_metric
