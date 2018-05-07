@@ -14,22 +14,7 @@ The neural-network once trained can be applied on an image to generate the segme
 
 ### Example:
 
-#### Original Image
-
-![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/image300.png)
-
-
-
-
-#### Ground Truth (from human)
-
-![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/Mask300.png)
-
-
-
-#### Segmentation Output (from U-Net)
-
-![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/segmentationOutput.png)
+![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/unet%20python.png)
 
 
 
