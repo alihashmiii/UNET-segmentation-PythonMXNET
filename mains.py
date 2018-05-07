@@ -164,7 +164,7 @@ if retrain:
     model = mx.module.Module(symbol = symbolicNet,data_names=['data'],label_names=['target'],context = device_context)
     model.fit(
     train_data = train_iter,
-    eval_data = val_iter,
+    #eval_data = val_iter,
     arg_params = arg_params,
     aux_params = aux_params,
     optimizer = optimizer,
