@@ -198,7 +198,7 @@ if applynet:
     print("printing last 10 NET-layers:", all_layers.list_outputs()[-10:],"\n")
     fe_sym = all_layers['logisticregressionoutput0_output'] # ->  OUTPUT function
     fe_mod = mx.mod.Module(symbol = fe_sym, context = device_context, label_names=None) # feeding output layer to the net
-    fe_mod.bind(for_training=True, data_shapes=[('data', (1,1,width,height))]) # binding new data
+    fe_mod.bind(for_training=False, data_shapes=[('data', (1,1,width,height))]) # binding new data
     fe_mod.set_params(arg_params, aux_params, allow_missing=True)     # assigning weights/gradients to the uninitialized layers
     fe_mod.forward(Batch([mx.nd.array(testimgdata)]))         # apply the net on the input image
     features = fe_mod.get_outputs()[0].asnumpy()        # output tensor
