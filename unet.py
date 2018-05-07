@@ -55,7 +55,6 @@ def get_unet(filtercount, kernel_size, pad_size, drop, batchsize,width,height):
         net = enc5
         printshape("@enc module_5: ", net, batchsize,width,height)
         ## -------------------- commencing expansion phase ---------------------
-        # deconvole and catenate layers
         net = decoder_module(net,enc4,filtercount*8,kernel_size,pad_size)
         printshape("@decoder_module_1: ", net, batchsize,width,height)
         net = decoder_module(net,enc3,filtercount*4,kernel_size,pad_size)
