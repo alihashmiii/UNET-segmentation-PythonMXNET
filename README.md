@@ -1,8 +1,8 @@
 # Blob Segmentation with U-Net
 
-`Status: passed`
+`Status`: passed
 
-`@author: Ali Hashmi`
+`@author`: Ali Hashmi
 
 `@note`: The python script uses `MXNET` (a modern opensource deep learning framework) to implement U-net: https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net
 
