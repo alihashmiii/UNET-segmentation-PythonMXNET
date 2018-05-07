@@ -46,7 +46,7 @@ train,retrain,applynet = (False,False,True)
 save_round = start_epoch + step_epochs
 
 # testing data
-test_img = "C:\\Users\\aliha\Downloads\\fabrice-ali\\deeplearning\\data\\train\\train_images_8bit\\image371.tif";
+test_img = "C:\\Users\\aliha\\Downloads\\fabrice-ali\\deeplearning\\data\\train\\train_images_8bit\\image371.tif";
 
 ############## setting directory #################
 if(os.getcwd() != directory):
