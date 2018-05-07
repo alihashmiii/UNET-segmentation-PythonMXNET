@@ -4,7 +4,8 @@
 
 `@author`: Ali Hashmi
 
-`@note`: The python script uses `MXNET` (a modern opensource deep learning framework) to implement U-net: https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net
+`@note`: The python script uses `MXNET` (a modern opensource deep learning framework) to implement U-net: https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net. You may need to install all the appropriate libraries/modules for python: mxnet (configure it for GPU), opencv etc.. As of now, the script has only been tested on Windows.
+(1) Download the script files to the same folder (2) Provide the folder path to `sys.path` or add the folder path to PYTHONPATH in the environment variables of your system.
 
 The neural network is general purpose. Please modify and/or customize the scripts for your segmentation problem (possibly it requires the search for new hyperparameters)
 
