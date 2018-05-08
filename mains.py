@@ -171,20 +171,22 @@ if retrain:
 
 ############### load the pretrained network and apply over an image ################
 
+randnum = np.random.randint(len(test_x_array))
 if applynet:
-    # testing data
-    test_img = "C:\\Users\\aliha\\Downloads\\fabrice-ali\\deeplearning\\data\\train\\train_images_8bit\\image370.tif";
-    testimgdata = np.asarray(imageResize(test_img,width,height)).reshape((1,1,width,height)) # input data to the net
+    testimgdata = test_x_array[randnum].reshape((1,1,width,height)) # input data to the net
     fe_mod = loadNet(directory + "saved_models\\lg_saves\\iteration ", num_round, "blobseg_model", device_context,width,height)
     fe_mod.forward(Batch([mx.nd.array(testimgdata)]))         # apply the net on the input image
     features = fe_mod.get_outputs()[0].asnumpy()        # output tensor
     features[features >= 0.1] = 255        # assign 255 (white)
-    plt.imshow(features[0][0], cmap = "gray")
+    plt.imshow(features[0][0],cmap = "gray")
+    plt.show()
+    plt.imshow(test_x_array[randnum,0],cmap="gray")
     plt.show()
     mask = np.array(features[0][0],dtype='uint8')       # peal tensor to get the matrix
-    maskimg = Image.fromarray(mask)      # create image and display
-    maskimg.show()
+    maskimg = Image.fromarray(mask)        # create image and display
     maskimg.save("C:/Users/aliha/Desktop/segmentationOutput.tif") # save segmentation mask
+    img = Image.fromarray(test_x_array[randnum,0])        # create image and display
+    img.save("C:/Users/aliha/Desktop/image_test.tif") # save segmentation mask
 
 ############# load the trained net and apply over a series of images (error was calculated below to check performance) ################
 
