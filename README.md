@@ -18,7 +18,9 @@ The neural-network once trained can be applied on an image to generate the segme
 
 
 
-### Accuracy check (98.12 %) 
+### Accuracy check (98.12 %)
+
+`@Note:` the Mathematica/Wolfram Language version of the trained network (https://github.com/alihashmiii/UNet-Segmentation-Wolfram) is doing considerably better than the Python MXNET version, despite the fact that Mathematica uses MXNET at the backend for implementing neural nets.
 
 ![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/accuracy.png)
 
