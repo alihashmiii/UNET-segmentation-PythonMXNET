@@ -18,7 +18,7 @@ The neural-network once trained can be applied on an image to generate the segme
 ![alt-text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/mathematicahighlighted.png)
 
 
-A filling transform was done to fill in the defect (hole) in the mask using Mathematica.
+A filling transform was done to fill in the defect (hole) in the mask before it was overlayed on the image (using Mathematica).
 
 
 ### Accuracy check for a batch of unseen images (98.12 %)
