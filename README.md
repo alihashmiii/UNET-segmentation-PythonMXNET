@@ -39,4 +39,4 @@ A filling transform was done to fill in the defect (hole) in the mask before it 
 
 
 `To do`: 
-- resize output back 
+- resize output back using perhaps bilinear interpolation
