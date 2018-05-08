@@ -1,5 +1,5 @@
 #################### NETGRAPH ########################
-import mxnet as mx
+import mxnet as mx, os
 
 def inferred_shape(net, batch_size,width,height):
     """ extracts dimensions/shapes of the various layers """
@@ -33,7 +33,7 @@ def decoder_module(input1,input2,filtercount,kernel_size,pad_size,downpool=False
     return net
 
 
-def get_unet(filtercount, kernel_size, pad_size, drop, batchsize,width,height):
+def get_unet(filtercount, kernel_size, pad_size, batchsize,width,height):
         """ generate symbolic neural network -> U-net"""
         data = mx.symbol.Variable('data')
         target = mx.symbol.Variable('target')
@@ -55,6 +55,7 @@ def get_unet(filtercount, kernel_size, pad_size, drop, batchsize,width,height):
         net = enc5
         printshape("@enc module_5: ", net, batchsize,width,height)
         ## -------------------- commencing expansion phase ---------------------
+        # deconvole and catenate layers
         net = decoder_module(net,enc4,filtercount*8,kernel_size,pad_size)
         printshape("@decoder_module_1: ", net, batchsize,width,height)
         net = decoder_module(net,enc3,filtercount*4,kernel_size,pad_size)
@@ -71,3 +72,14 @@ def get_unet(filtercount, kernel_size, pad_size, drop, batchsize,width,height):
         printshape("@output: ", net, batchsize,width,height)
         print("\n")
         return net
+
+def loadNet(path,iternum,model_prefix,device_context,width,height):
+    os.chdir(path + str(iternum))
+    symbolicNet, arg_params, aux_params = mx.model.load_checkpoint(model_prefix,iternum) # loading trained network
+    all_layers = symbolicNet.get_internals()   # retrieve all the symbolical layers of the network
+    print("printing last 10 NET-layers:", all_layers.list_outputs()[-10:],"\n")
+    fe_sym = all_layers['logisticregressionoutput0_output'] # ->  OUTPUT function
+    fe_mod = mx.mod.Module(symbol = fe_sym, context = device_context, label_names=None) # feeding output layer to the net
+    fe_mod.bind(for_training=False, data_shapes=[('data', (1,1,width,height))]) # binding new data
+    fe_mod.set_params(arg_params, aux_params, allow_missing=True)     # assigning weights/gradients to the uninitialized layers
+    return fe_mod
