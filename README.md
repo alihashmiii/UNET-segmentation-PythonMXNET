@@ -18,7 +18,7 @@ The neural-network once trained can be applied on an image to generate the segme
 
 
 
-### Accuracy check (98.12 %) :> As for the image below, the HYDROGEN package was used to mimic Jupyter Notebook within ATOM 
+### Accuracy check (98.12 %) 
 
 ![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/accuracy.png)
 
