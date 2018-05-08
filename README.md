@@ -20,7 +20,7 @@ The neural-network once trained can be applied on an image to generate the segme
 
 ### Accuracy check (98.12 %)
 
-`@Note:` the Mathematica/Wolfram Language version of the trained neural network (https://github.com/alihashmiii/UNet-Segmentation-Wolfram) is doing considerably better than the Python MXNET version, despite the fact that Mathematica uses MXNET at the backend for implementing neural nets. This is perhaps due to the thresholding operation that i need to apply after the logisticRegression layer. Nevertheless, it is doing a good job segmenting most aggregates (with or without applying any additional morphological operations)
+`@Note`: the Mathematica/Wolfram Language version of the trained neural network (https://github.com/alihashmiii/UNet-Segmentation-Wolfram) is doing considerably better than the Python MXNET version, despite the fact that Mathematica uses MXNET at the backend for implementing neural nets. This is perhaps due to the thresholding operation that i need to apply after the logisticRegression layer. Nevertheless, it is doing a good job segmenting most aggregates (with or without applying any additional morphological operations)
 
 ![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/accuracy.png)
 
