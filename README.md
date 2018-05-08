@@ -15,7 +15,7 @@ The neural-network once trained can be applied on an image to generate the segme
 
 ### Example:
 
-
+[alt-text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/mathematicahighlighted.png)
 
 
 ### Accuracy check for a batch of unseen images (98.12 %)
