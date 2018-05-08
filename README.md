@@ -1,6 +1,6 @@
 # Blob Segmentation with U-Net
 
-`Status`: passed
+![status](https://img.shields.io/badge/status-passed-blue.svg)
 
 `@author`: Ali Hashmi
 
