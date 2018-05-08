@@ -1,4 +1,5 @@
 from PIL import Image
+#import cv2
 
 def claheResize(imagefile,width,height):
     """ contrast limited adaptive histogram equalization from OPENCV and image resizing """
