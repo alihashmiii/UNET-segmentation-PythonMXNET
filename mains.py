@@ -10,7 +10,7 @@ numpy, matplotlib, os and PIL\n
  */\n""")
 
 ############ importing all relevant modules ############
-import mxnet as mx, os, numpy as np, matplotlib.pyplot as plt, cv2, logging, random
+import mxnet as mx, os, numpy as np, matplotlib.pyplot as plt, cv2, logging, random, scipy, seaborn as sns
 from PIL import Image
 from shutil import copyfile
 from unet import *
@@ -36,17 +36,13 @@ initializer = mx.initializer.Normal(np.sqrt(2 / 576))
 num_round = 10; #number of epochs (for training rounds)
 batch_size = 8; #batch-size to process
 fractionalp = 5/6; #training-dataset/testing-dataset ratio
-lr = 0.1;  #learning rate
-drop = 0.5; #drop from the DropOut layer
-optimizer = 'sgd' # other possible options are: 'adam', 'rmsprop', 'nadam' etc..
-optimizerdict = {'learning_rate': lr,'momentum':0.90}
+lr = 0.01;  #learning rate
+optimizer = 'adam' # other possible options are: 'adam', 'rmsprop', 'nadam' etc..
+optimizerdict = {'learning_rate': lr}
 train,retrain,applynet = (False,False,True)
 # for retraining the network
 (start_epoch,step_epochs) = (10,0)
 save_round = start_epoch + step_epochs
-
-# testing data
-test_img = "C:\\Users\\aliha\\Downloads\\fabrice-ali\\deeplearning\\data\\train\\train_images_8bit\\image371.tif";
 
 ############## setting directory #################
 if(os.getcwd() != directory):
@@ -58,7 +54,6 @@ imagefilenames = os.listdir(training_image_directory) # list of all images in th
 training_label_directory = directory + "data\\train\\train_masks\\"
 maskfilenames = os.listdir(training_label_directory) # list of all masks in the directory
 
-
 ###############  generate training and test datasets ###################
 
 # load and resize labels -> ensure binary images
@@ -69,13 +64,12 @@ imagefilenames = imagefilenames[0:360]
 maskfilenames = maskfilenames[0:360]
 
 ##### Resize images
-train_x = np.asarray(list(map(lambda x: np.array(imageResize(x,width,height)), imagefilenames))) # """ same as below, just more functional in nature"""
+train_x = np.asarray(list(map(lambda x: np.array(imageResize(x,width,height)), imagefilenames))) # """same as below"""
 #train_x = np.asarray([np.array(imageResize(imagefilenames[i],width,height)) for i in range(len(imagefilenames))])
 
 ##### image resizing with CLAHE OpenCV
 #train_x = np.asarray(list(map(lambda x: np.array(claheResize(x,width,height)),imagefilenames)))
 #train_x = np.asarray([np.array(claheResize(imagefilenames[i],width,height)) for i in range(len(imagefilenames))])
-
 
 ##### Resize Masks/Labels
 train_y = np.asarray(list(map(lambda x: np.array(imageResize(x,width,height)),maskfilenames)))
@@ -102,7 +96,7 @@ os.chdir(directory + "saved_models\\") # dir to save the training model
 
 print("### Architecture of U-net ###\n")
 ######################## make the network ########################
-net = get_unet(filtercount, kernel_size, pad_size, drop, batch_size, width, height) # generate the symbolic network (uninitialized)
+net = get_unet(filtercount, kernel_size, pad_size, batch_size, width, height) # generate the symbolic network (uninitialized)
 mx.viz.plot_network(net, save_format = 'pdf').render() # visualize the neural network -> check directory for save
 
 # internal metrics can be used, in contrast build custom metrics if need-be
@@ -153,7 +147,6 @@ if train:
 
 
 # --------------------------------------- Supplementary procedures ---------------------------------------------
-
 ############### retrain the network-model if necessary #################
 
 if retrain:
@@ -176,35 +169,49 @@ if retrain:
     os.chdir(directory + "saved_models\\retrain\\")
     model.save_checkpoint(model_prefix,save_round)
 
-
 ############### load the pretrained network and apply over an image ################
 
-def printOutput(matrix):
-    """ matrix printout function to display output matrix """
-    fig.set_data(matrix)
-    plt.show()
-
 if applynet:
-    # directory to load the pretrained model - use num_round or save_round to load the desired model
-    iteration = num_round
-    #os.chdir(directory + "saved_models\\retrain\\")
-    os.chdir(directory + "saved_models\\lg_saves\\iteration " + str(iteration))
-    model_prefix = "blobseg_model"
-    #testimgdata = np.asarray(claheResize(test_img)).reshape((1,1,width,height))
+    # testing data
+    test_img = "C:\\Users\\aliha\\Downloads\\fabrice-ali\\deeplearning\\data\\train\\train_images_8bit\\image370.tif";
     testimgdata = np.asarray(imageResize(test_img,width,height)).reshape((1,1,width,height)) # input data to the net
-
-    symbolicNet, arg_params, aux_params = mx.model.load_checkpoint(model_prefix,iteration) # loading trained network
-    all_layers = symbolicNet.get_internals()   # retrieve all the symbolical layers of the network
-    print("printing last 10 NET-layers:", all_layers.list_outputs()[-10:],"\n")
-    fe_sym = all_layers['logisticregressionoutput0_output'] # ->  OUTPUT function
-    fe_mod = mx.mod.Module(symbol = fe_sym, context = device_context, label_names=None) # feeding output layer to the net
-    fe_mod.bind(for_training=False, data_shapes=[('data', (1,1,width,height))]) # binding new data
-    fe_mod.set_params(arg_params, aux_params, allow_missing=True)     # assigning weights/gradients to the uninitialized layers
+    fe_mod = loadNet(directory + "saved_models\\lg_saves\\iteration ", num_round, "blobseg_model", device_context,width,height)
     fe_mod.forward(Batch([mx.nd.array(testimgdata)]))         # apply the net on the input image
     features = fe_mod.get_outputs()[0].asnumpy()        # output tensor
     features[features >= 0.1] = 255        # assign 255 (white)
-    printOutput(features[0][0])
+    plt.imshow(features[0][0], cmap = "gray")
+    plt.show()
     mask = np.array(features[0][0],dtype='uint8')       # peal tensor to get the matrix
-    maskimg = Image.fromarray(mask)        # create image and display
+    maskimg = Image.fromarray(mask)      # create image and display
     maskimg.show()
     maskimg.save("C:/Users/aliha/Desktop/segmentationOutput.tif") # save segmentation mask
+
+############# load the trained net and apply over a series of images (error was calculated below to check performance) ################
+
+temp=[];
+if applynet:
+    fe_mod = loadNet(directory + "saved_models\\lg_saves\\iteration ", num_round, "blobseg_model", device_context, width, height)
+    for j,i in enumerate(test_x_array): # test_x_array are the unseen images
+        groundT = test_y_array[j]*1
+        groundT[groundT >= 1] = 1
+        groundT[groundT < 1] = 0
+        i = i.reshape((1,1,width,height))
+        fe_mod.forward(Batch([mx.nd.array(i)]))            # apply the net on the input image
+        features = fe_mod.get_outputs()[0].asnumpy()       # output tensor
+        features[features >= 0.1] = 1
+        features[features < 0.1] = 0
+        temp.append(1.0 - scipy.spatial.distance.hamming(groundT.flatten(),features.flatten()))
+        mask = np.array(features[0,0],dtype='uint8')       # peal tensor to get the matrix
+        maskimg = Image.fromarray(mask)      # create mask image
+        #maskimg.save("C:/Users/aliha/Desktop/output/mask/segmentationOutput" + str(j) + ".tif") # save segmentation mask
+        img = np.array(test_x_array[j,0],dtype='uint8')       # peal tensor to get the matrix
+        img = Image.fromarray(img)      # create image
+        #img.save("C:/Users/aliha/Desktop/output/image/serial" + str(j) + ".tif") # save image
+        f, axarr = plt.subplots(1,2)
+        axarr[0].imshow(test_x_array[j,0],cmap="gray")
+        axarr[1].imshow(features[0,0],cmap= "gray")
+        plt.show()
+
+    np.mean(temp)
+    sns.distplot(temp, kde = False, color="#4CB391",bins=15)
+    plt.show()
