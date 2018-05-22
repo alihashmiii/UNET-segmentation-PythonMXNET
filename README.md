@@ -15,7 +15,7 @@ The neural-network once trained can be applied on an image to generate the segme
 
 ### Example:
 
-![alt-text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/mathematicahighlighted.png)
+![alt-text](https://github.com/alihashmiii/UNET-segmentation-PythonMXNET/blob/master/for%20readme/accuracyNet.png)
 
 
 A filling transform was done to fill in the defect (hole) in the mask before it was overlayed on the image (using Mathematica).
