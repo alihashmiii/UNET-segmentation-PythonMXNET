@@ -28,14 +28,9 @@ A filling transform was done to fill in the defect (hole) in the mask before it 
 ![alt text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/accuracy.png)
 
 
-##### Output from net after thresholding 
+##### Output from UNet after thresholding, filling and removing small components
 
-![alt-text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/an%20okish%20job%201.png)
-
-
-##### Output from net after thresholding and morphological closing operation (slightly improved)
-
-![alt-text](https://github.com/alihashmiii/blobsegmentation/blob/master/for%20readme/an%20okish%20job%202.png)
+![alt-text](https://github.com/alihashmiii/UNET-segmentation-PythonMXNET/blob/master/for%20readme/outputUnet.png)
 
 
 `To do`: 
