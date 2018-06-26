@@ -1,4 +1,4 @@
-# Blob Segmentation with U-Net
+# UNet Segmentation Python/MXNET 
 
 ![status](https://img.shields.io/badge/status-passed-blue.svg)
 
